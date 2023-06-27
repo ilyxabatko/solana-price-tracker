@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import logo from '../../src/solana-sol-logo.svg';
 
+// Request CoinGecko URL
 const API_URL = "https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd&precision=2";
 
 export default function PriceFeed() {
+    // price state
     const [solPrice, setSolPrice] = useState(null);
 
+    // funtction that fetches and sets the Sol price
     const fetchSolPrice = async () => {
         try {
             const response = await fetch(API_URL);
@@ -17,6 +20,7 @@ export default function PriceFeed() {
         }
     }
 
+    // effect hook that re-fetches the price on the first render and then every 10 seconds
     useEffect(() => {
         fetchSolPrice();
 
@@ -29,6 +33,7 @@ export default function PriceFeed() {
         }
     }, []);
 
+    // JSX return statement that checks if solPrice is null and sets its value
     return (
         <div>
             <img src={logo} className={"App-logo"} alt="Solana logo" />

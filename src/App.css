@@ -22,6 +22,7 @@
     color: #61dafb;
 }
 
+/* adds some effects on the link hover */
 .App-link:hover {
     color: #61dafb;
     text-shadow: 4px 4px rgb(166, 34, 135);
